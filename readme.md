@@ -1,8 +1,8 @@
 ## QBox: Partial Transfer Learning with Active Querying for Object Detection
 
-Authors: Ying-Peng Tang, Xiu-Shen Wei, Borui Zhao, Qi Qian, and Sheng-Jun Huang
+Authors: Ying-Peng Tang, Xiu-Shen Wei, Borui Zhao and Sheng-Jun Huang
 
-This repository is the official PyTorch implementation of paper "QBox: Partial Transfer Learning with Active Querying for Object Detection". (**This work is under reviewing, please do not distribute the code.**)
+This repository implements the method "QBox: Partial Transfer Learning with Active Querying for Object Detection". 
 
 ![pipeline](exp_imgs/pipeline.jpg)
 
@@ -10,19 +10,20 @@ QBox is an active learning method for partial transfer object detection task. It
 
 ## Main requirements
 
+The experiments are conducted in the following environments:
 * **torch == 1.2.0**
 * **torchvision == 0.4.0**
 * **Python 3.7**
 
 ## Environmental settings
 
-This repository is developed using python **3.7** on Ubuntu **16.04.5 LTS**. The CUDA nad CUDNN version is **10.0.130** and **7.5.0** respectively. We use **two NVIDIA 1080ti GPU cards** for training and testing. Other platforms or GPU cards are not fully tested. Note that the program is written for multiple cards, and the batch size is fixed as 32, so make sure your server has **at least two cards**, and the sum of the GPU memory is larger than 22GB.
+This repository is developed using python **3.7** on Ubuntu **16.04.5 LTS**. The CUDA nad CUDNN version is **10.0.130** and **7.5.0** respectively. We use **two NVIDIA 1080ti GPU cards** for training and testing. Other platforms or GPU cards are not fully tested. Note that the program is tested only on multiple cards, and the batch size is fixed as 32. It is recommended to make sure your server has at least two cards, and the sum of the GPU memory is larger than 22GB.
 
 ## Pretrain models
 
 The weights of pretrained model (darknet53 weights) can be downloaded by the script in weights/download_yolov3_weights.sh
 
-For the COVID-19 dataset, we further pre-train the model on two other datasets. We use the data in \url{https://github.com/rsummers11/CADLab/tree/master/Lung_Segmentation_XLSor} and \url{https://www.kaggle.com/yoctoman/shcxr-lung-mask}}. The pretrained model parameters are availabel at [BaiduNetDisk](https://pan.baidu.com/s/1NwfNvTWggPd0TvCYJmrsXw) (fetch code is 'if3f') or [GoogleDrive](https://drive.google.com/file/d/1GTFO4AKnAUKXDevH9WPuyKlIBLvEVGZl/view?usp=sharing).
+For the COVID-19 dataset, we further pre-train the model on two other datasets. We use the data in https://github.com/rsummers11/CADLab/tree/master/Lung_Segmentation_XLSor and https://www.kaggle.com/yoctoman/shcxr-lung-mask. The pretrained model parameters are availabel at [BaiduNetDisk](https://pan.baidu.com/s/1NwfNvTWggPd0TvCYJmrsXw) (fetch code is 'if3f') or [GoogleDrive](https://drive.google.com/file/d/1GTFO4AKnAUKXDevH9WPuyKlIBLvEVGZl/view?usp=sharing).
 
 ## Usage
 
@@ -34,10 +35,6 @@ For the COVID-19 dataset, we further pre-train the model on two other datasets. 
 # the --dataset option determines which setting will be used. If a new dataset is used, please modify the qbox_main.py and config.py files accordingly.
 python qbox_main.py --dataset kitti --data-split-dir /data/dataset/ --save-dir /data/saved_model/ --al-save-dir /data/saved_al/
 ```
-
-## Running time
-
-when the program runs on HDD and a single $2080$Ti graphic card with batch size $16$, the training speed is $1.733$ batches per second ($1.98$ for the vanilla YOLOv3 model), and the inference speed is $7.80$ batches per second.
 
 ## Results
 
@@ -51,15 +48,20 @@ Quantitative experiments are conducted on the partial transfer benchmark dataset
 
 We also apply our method to a real COVID-19 detection task. Since screening the positive cases accurately and timely is crucial to control the spread of disease, empirical results show our QBox is potential to alleviate the extreme scarcity of training data by effectively querying the desired patterns from a resource-rich suspected unlabeled domain.
 
-![covid](exp_imgs/covid_lc.png)
+<img src="exp_imgs/covid_lc.png" width="60%">
 
-## Citing this repository
-
-TBD
 
 ## The COVID-19 detection dataset
 
 we use [COVID-19 image data collection](https://github.com/ieee8023/covid-chestxray-dataset) and [RSNA dataset](\url{https://www.kaggle.com/c/rsna-pneumonia-detection-challenge}) as the target and source domain.
 The target task is to localize the lung region and discriminate between COVID-19 symptoms and the other cases from X-Ray images.
-Note that RSNA dataset does not provide the bounding boxes of lung regions, here we use the lung region masks for a small subset provided by \url{https://github.com/limingwu8/Lung-Segmentation}, and convert them into bounding boxes in our experiment. Besides, 100 health examples are added to the unlabeled pool. The data split is repeated randomly for 10 times. Please see the 'data_split' folder for the specific settings.
+Note that RSNA dataset does not provide the bounding boxes of lung regions, here we use the lung region masks for a small subset provided by https://github.com/limingwu8/Lung-Segmentation, and convert them into bounding boxes in our experiment. Besides, 100 health examples are added to the unlabeled pool. The data split is repeated randomly for 10 times. Please see the 'data_split' folder for the specific settings.
 the pneumonia examples in the constructed source domain contain various patterns, which include bacterial pneumonias, fungal pneumonias and other viral pneumonias. But they are assigned to the same class for simplicity.
+
+## Citing this repository
+
+Still in press. TBD
+
+## Contact
+
+If you have any questions of this work, please feel free to contact with: tangyp@nuaa.edu.cn
