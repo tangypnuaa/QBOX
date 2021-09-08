@@ -1,0 +1,7 @@
+classes=20
+source_train=/data/coco/trainvalno5k_fn.txt
+target_train=/data/voc/voc_pure_data/uni_train.txt
+valid=/data/voc/voc_pure_data/test.txt
+names=data/real_coco.names
+backup=backup/
+eval=voc

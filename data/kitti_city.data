@@ -1,0 +1,7 @@
+classes=5
+source_train=/data/dataset/city_src.txt
+target_train=/data/dataset/kitti_tgt_ini.txt
+valid=/data/dataset/kitti_tgt_test.txt
+names=data/kitti_tgt.names
+backup=backup/
+eval=voc

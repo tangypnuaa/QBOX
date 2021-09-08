@@ -1,0 +1,7 @@
+classes=2
+source_train=/data/dataset/pneu_src.txt
+target_train=/data/dataset/covid_tgt_ini.txt
+valid=/data/dataset/covid_tgt_test.txt
+names=data/covid.names
+backup=backup/
+eval=voc

@@ -1,0 +1,7 @@
+classes=6
+source_train=/data/dataset/voc_src.txt
+target_train=/data/dataset/city_tgt_ini.txt
+valid=/data/dataset/city_tgt_test.txt
+names=data/city_tgt.names
+backup=backup/
+eval=voc
