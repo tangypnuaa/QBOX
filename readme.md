@@ -60,7 +60,17 @@ the pneumonia examples in the constructed source domain contain various patterns
 
 ## Citing this repository
 
-Still in press. TBD
+```
+@ARTICLE{9548667,
+  author={Tang, Ying-Peng and Wei, Xiu-Shen and Zhao, Borui and Huang, Sheng-Jun},
+  journal={IEEE Transactions on Neural Networks and Learning Systems}, 
+  title={QBox: Partial Transfer Learning With Active Querying for Object Detection}, 
+  year={2023},
+  volume={34},
+  number={6},
+  pages={3058-3070}
+}
+```
 
 ## Contact
 
